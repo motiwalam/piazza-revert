@@ -205,6 +205,10 @@
             background-color: #eaeef4;
         }
 
+        [data-darkreader-scheme="dark"] .main-content .questions-and-answers {
+            background-color: #313638;
+        }
+
         #react_feed + .questions-and-answers #qanda-content {
             margin-left: 0px;
         }
