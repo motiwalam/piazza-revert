@@ -225,8 +225,24 @@
             background-color: #313638;
         }
 
+        [data-darkreader-scheme="dark"] #react_feed #feed_list_wrapper #feed_list ul li.feed_item .content .snippet {
+            color: #a8a095;
+        }
+
+        [data-darkreader-scheme="dark"] #react_feed #feed_list_wrapper #feed_list ul li.feed_item.selected {
+            background-color: #3c3200;
+        }
+
+        #react_feed #feed_list_wrapper #feed_list ul li.feed_item .feed_item_dropdown_selector {
+            top: auto;
+            left: auto;
+            bottom: 4px;
+            right: 4px;
+        }
+
         #react_feed + .questions-and-answers #qanda-content {
             margin-left: 0px;
+            padding-right: 9px;
         }
 
         #qanda-content {
@@ -274,6 +290,7 @@
         article.answer > footer, .main-content .questions-and-answers #qanda-content .post-footer {
             padding-top: 0.25rem;
             padding-bottom: 0.25rem;
+            height: 2.25rem;
             background-color: var(--qa-footer-background-color);
         }
 
