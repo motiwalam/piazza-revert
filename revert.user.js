@@ -201,6 +201,22 @@
         }
 
         /* fix QA section */
+        :root {
+            --qa-section-border-color: #dee2e6;
+            --qa-footer-background-color: rgba(127,127,127,.1);
+            --qa-followup-background-color: #f6f7f6;
+            --qa-followup-reply-background-color: #f2f2f2;
+            --qa-avatar-border-color: #fff;
+        }
+
+        html[data-darkreader-scheme="dark"] {
+            --qa-section-border-color: #383d3f;
+            --qa-footer-background-color: rgba(96, 104, 108, 0.1);
+            --qa-followup-background-color: #1d1f20;
+            --qa-followup-reply-background-color: #1f2223;
+            --qa-avatar-border-color: #303436;
+        }
+
         .main-content .questions-and-answers {
             background-color: #eaeef4;
         }
@@ -217,12 +233,21 @@
             padding: 0 8px;
         }
 
+        #post-header > button[aria-label="Close"] {
+            display: none;
+        }
+
         .main-content .questions-and-answers #qanda-content #post-header {
             border-bottom-left-radius: 0;
             border-bottom-right-radius: 0;
+            box-shadow: 0 1px 4px rgba(0,0,0,.15);
+            clip-path: inset(-4px -4px 0px -4px);
+            border-bottom: 1px solid var(--qa-section-border-color);
+            padding: 0.5rem 1rem !important;
         }
 
         .main-content .questions-and-answers #qanda-content .post-footer {
+            border-top: 1px solid var(--qa-section-border-color);
             background: none;
         }
 
@@ -231,10 +256,91 @@
             border-top-right-radius: 0;
             border-bottom-left-radius: 10px;
             border-bottom-right-radius: 10px;
+            box-shadow: 0 1px 4px rgba(0,0,0,.15);
+            padding-top: 0.75rem;
+        }
+
+        article.answer {
+            box-shadow: 0 1px 4px rgba(0,0,0,.15);
+            padding: 0 !important;
+        }
+
+        article.answer > header {
+            padding-left: 1.5rem;
+            padding-right: 2rem;
+            padding-bottom: 0.5rem;
+        }
+
+        article.answer > footer, .main-content .questions-and-answers #qanda-content .post-footer {
+            padding-top: 0.25rem;
+            padding-bottom: 0.25rem;
+            background-color: var(--qa-footer-background-color);
+        }
+
+        article.answer > footer > div > div.pl-4 {
+            padding-left: 1rem !important;
+            margin-top: 0 !important;
+        }
+
+        article.answer {
+            position: relative;
+        }
+
+        .main-content .questions-and-answers #qanda-content .answer .update_text {
+            margin: 0;
+            text-align: right;
+            position: absolute;
+            bottom: 0.5rem;
+            right: 1rem;
+        }
+
+        article.answer > div:first-of-type {
+            margin-left: 0 !important;
+        }
+
+        article.answer > .content {
+            margin: 0 !important;
+            padding-right: 1.5rem !important;
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+            border-top: 1px solid var(--qa-section-border-color);
+            border-bottom: 1px solid var(--qa-section-border-color);
+        }
+
+        article.answer button.btn-ghost, .main-content .questions-and-answers #qanda-content .post-footer button.btn-ghost {
+            background-color: #1370c4;
+            color: #fff;
+            align-items: center;
+        }
+
+        article.answer button.btn-ghost:hover:not(:disabled), .main-content .questions-and-answers #qanda-content .post-footer button.btn-ghost:hover:not(:disabled) {
+            background-color: #0f5391;
+        }
+
+        article.answer button.btn-ghost > svg, .main-content .questions-and-answers #qanda-content .post-footer button.btn-ghost > svg {
+            display: none;
         }
 
         article.followup_container > header {
-            padding-top: 1rem;
+            padding-top: 0.5rem;
+            margin-bottom: 0 !important;
+        }
+
+        article.followup_container .followup {
+            background: var(--qa-followup-background-color);
+        }
+
+        article.followup_container .followup_reply {
+            background: var(--qa-followup-reply-background-color);
+        }
+
+        article.followup_container .followup .followup_content_wrapper > .border-left {
+            border-left: 0 !important;
+        }
+
+        .main-content .questions-and-answers #qanda-content article .content .avatar {
+            border-radius: 0;
+            border: 2px solid var(--qa-avatar-border-color);
         }
 
         .followup.private {
