@@ -303,7 +303,7 @@
             position: relative;
         }
 
-        .main-content .questions-and-answers #qanda-content .answer .update_text {
+        .main-content .questions-and-answers #qanda-content .answer .update_text[data-id="contributors"] {
             margin: 0;
             text-align: right;
             position: absolute;
