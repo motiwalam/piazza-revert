@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Piazza Revert
 // @namespace    https://github.com/embeddedt
-// @version      0.1
+// @version      0.2
 // @description  Revert Piazza to the old user interface
 // @author       embeddedt
 // @match        https://piazza.com/*
@@ -170,6 +170,16 @@
             font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
         }
 
+        #content-holder .feed-wrapper {
+            padding-left: 0;
+            margin-left: 0;
+        }
+
+        #content-holder #react_feed #feed_list_wrapper {
+            border-radius: 0px;
+            margin-bottom: 0px;
+        }
+
         #react_feed #feed_list_wrapper #feed_list ul li.feed_item .content .snippet {
             font-family: "Lucida Grande",Lucida,Tahoma,Verdana,Arial,sans-serif;
             color: #666;
@@ -177,6 +187,7 @@
 
         #feed_search_bar {
             max-width: 400px;
+            padding-left: 4px;
         }
 
         /* move menu items next to course name */
@@ -194,6 +205,7 @@
 
         #qanda-content > div > hr {
            border-top: none;
+           height: 1em;
         }
 
         * {
@@ -203,18 +215,20 @@
         /* fix QA section */
         :root {
             --qa-section-border-color: #dee2e6;
-            --qa-footer-background-color: rgba(127,127,127,.1);
+            --qa-footer-background-color: rgb(242, 242, 242);
             --qa-followup-background-color: #f6f7f6;
             --qa-followup-reply-background-color: #f2f2f2;
             --qa-avatar-border-color: #fff;
+            --qa-article-border-color: #cccccc;
         }
 
         html[data-darkreader-scheme="dark"] {
             --qa-section-border-color: #383d3f;
-            --qa-footer-background-color: rgba(96, 104, 108, 0.1);
+            --qa-footer-background-color: #222526;
             --qa-followup-background-color: #1d1f20;
             --qa-followup-reply-background-color: #1f2223;
             --qa-avatar-border-color: #303436;
+            --qa-article-border-color: #3e4446;
         }
 
         .main-content .questions-and-answers {
@@ -222,7 +236,7 @@
         }
 
         [data-darkreader-scheme="dark"] .main-content .questions-and-answers {
-            background-color: #313638;
+            background-color: #212425;
         }
 
         [data-darkreader-scheme="dark"] #react_feed #feed_list_wrapper #feed_list ul li.feed_item .content .snippet {
@@ -254,12 +268,15 @@
         }
 
         .main-content .questions-and-answers #qanda-content #post-header {
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
             border-bottom-left-radius: 0;
             border-bottom-right-radius: 0;
             box-shadow: 0 1px 4px rgba(0,0,0,.15);
             clip-path: inset(-4px -4px 0px -4px);
-            border-bottom: 1px solid var(--qa-section-border-color);
+            border: 1px solid var(--qa-section-border-color);
             padding: 0.5rem 1rem !important;
+            margin: 0 0.5rem;
         }
 
         .main-content .questions-and-answers #qanda-content .post-footer {
@@ -267,23 +284,41 @@
             background: none;
         }
 
+        .main-content .questions-and-answers #qanda-content article[data-id="i_answer"], .main-content .questions-and-answers #qanda-content article[data-id="s_answer"]  {
+            background-color: #ffffff;
+        }
+
+        [data-darkreader-scheme="dark"] .main-content .questions-and-answers #qanda-content article[data-id="i_answer"], [data-darkreader-scheme="dark"] .main-content .questions-and-answers #qanda-content article[data-id="s_answer"] {
+            background-color: #181a1b;
+        }
+
         .main-content .questions-and-answers #qanda-content article#qaContentViewId {
             border-top-left-radius: 0;
             border-top-right-radius: 0;
-            border-bottom-left-radius: 10px;
-            border-bottom-right-radius: 10px;
             box-shadow: 0 1px 4px rgba(0,0,0,.15);
             padding-top: 0.75rem;
+            margin: 0 0.5rem;
+            padding-bottom: 0 !important;
+            border: 1px solid var(--qa-section-border-color);
+            border-top: none;
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
+        }
+
+        .main-content .questions-and-answers #qanda-content .followup_container {
+            margin-left: 0.5rem;
+            margin-right: 0.5rem;
         }
 
         article.answer {
             box-shadow: 0 1px 4px rgba(0,0,0,.15);
             padding: 0 !important;
+            border-radius: 5px;
         }
 
         article.answer > header {
-            padding-left: 1.5rem;
-            padding-right: 2rem;
+            padding-left: 1rem;
+            padding-right: 1rem;
             padding-bottom: 0.5rem;
         }
 
@@ -292,15 +327,18 @@
             padding-bottom: 0.25rem;
             height: 2.25rem;
             background-color: var(--qa-footer-background-color);
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
         }
 
         article.answer > footer > div > div.pl-4 {
-            padding-left: 1rem !important;
+            padding-left: 0.5rem !important;
             margin-top: 0 !important;
         }
 
         article.answer {
             position: relative;
+            border: 1px solid var(--qa-article-border-color);
         }
 
         .main-content .questions-and-answers #qanda-content .answer .update_text[data-id="contributors"] {
@@ -318,8 +356,8 @@
         article.answer > .content {
             margin: 0 !important;
             padding-right: 1.5rem !important;
-            padding-top: 0.5rem;
-            padding-bottom: 0.5rem;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
             border-top: 1px solid var(--qa-section-border-color);
             border-bottom: 1px solid var(--qa-section-border-color);
         }
