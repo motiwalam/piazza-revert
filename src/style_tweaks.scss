@@ -309,3 +309,8 @@ article.followup_container .followup .followup_content_wrapper > .border-left {
         cursor: pointer;
     }
 }
+
+/* render a background behind transparent images (e.g. with handwriting) */
+#qanda-content .render-html-content img, img.pswp__img {
+    background-color: white;
+}
