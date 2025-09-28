@@ -25,6 +25,10 @@ export default {
           "sass-loader"
         ],
       },
+      {
+        test: /\.css$/i,
+        type: 'asset/source'
+      }
     ],
   },
   plugins: [

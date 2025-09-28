@@ -1,9 +1,12 @@
 import styleTweaks from './style_tweaks.scss';
+import photoswipeCss from 'photoswipe/style.css';
+import PhotoSwipe from 'photoswipe';
 import { SettingsManager } from './utils/settings';
 
 console.log("Bootstrapped Piazza Revert");
 
 GM_addStyle(styleTweaks);
+GM_addStyle(photoswipeCss);
 
 function injectEndorsementFix() {
     const endorsementInfo = new Map();
@@ -289,44 +292,34 @@ function injectImageHover() {
 }
 
 function injectImageInteractivity() {
-    const fancyboxVersion = "6.0";
-
-    GM_addElement('link', {
-        rel: 'stylesheet',
-        href: `https://cdn.jsdelivr.net/npm/@fancyapps/ui@${fancyboxVersion}/dist/fancybox/fancybox.css`
-    });
-
-    GM_addElement('script', {
-        src: `https://cdn.jsdelivr.net/npm/@fancyapps/ui@${fancyboxVersion}/dist/fancybox/fancybox.umd.js`
-    });
-
-    if (!userscriptSettings.get("enableFancyGallery")) {
-        return;
-    }
-
     document.addEventListener("click", event => {
+        if (!userscriptSettings.get("enableFancyGallery")) {
+            return;
+        }
+
         const clickedImg = event.target.closest(imagesToMakeInteractive);
         if (!clickedImg) return;
 
         event.preventDefault();
 
         const container = clickedImg.closest(".render-html-content") || document;
+        /** @type Array<HTMLImageElement> */
         const imgs = Array.from(container.querySelectorAll(imagesToMakeInteractive));
 
         const slides = imgs.map(img => ({
             src: img.src,
-            thumbSrc: img.src,
-            caption: img.alt || img.title || ""
+            width: img.naturalWidth,
+            height: img.naturalHeight,
+            alt: img.alt || img.title || ""
         }));
 
         const startIndex = imgs.indexOf(clickedImg);
 
-        Fancybox.show(slides, {
-            startIndex,
-            Toolbar: {
-                display: ["zoom", "slideshow", "fullscreen", "download", "close"]
-            }
+        const pswp = new PhotoSwipe({
+            dataSource: slides,
+            index: startIndex
         });
+        pswp.init();
     });
 }
 
