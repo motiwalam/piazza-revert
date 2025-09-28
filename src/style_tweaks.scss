@@ -303,7 +303,7 @@ article.followup_container .followup .followup_content_wrapper > .border-left {
 
 .us-feature-smallerImagesInPosts {
     /* shrink images by default until clicked */
-    #qanda-content .render-html-content img {
+    body .render-html-content img {
         max-width: 150px;
         height: auto;
         cursor: pointer;
@@ -311,6 +311,6 @@ article.followup_container .followup .followup_content_wrapper > .border-left {
 }
 
 /* render a background behind transparent images (e.g. with handwriting) */
-#qanda-content .render-html-content img, img.pswp__img {
+body .render-html-content img, img.pswp__img {
     background-color: white;
 }

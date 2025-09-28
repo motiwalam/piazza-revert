@@ -34,6 +34,7 @@ export default {
   plugins: [
     new UserscriptPlugin({
       headers: (original) => {
+        /** @type {HeadersProps} */
         const customHeaders = {
           name: 'Piazza Revert',
           namespace: 'https://github.com/embeddedt',
@@ -42,7 +43,8 @@ export default {
           author: 'embeddedt',
           match: 'https://piazza.com/*',
           homepage: 'https://github.com/embeddedt/piazza-revert',
-          grant: ['GM_addStyle', 'GM_addElement'],
+          connect: ['piazza.com'],
+          grant: ['GM_addStyle', 'GM_addElement', 'GM_xmlhttpRequest'],
           version: `${original.version}-build.[buildTime]`
         };
         if (!dev) {

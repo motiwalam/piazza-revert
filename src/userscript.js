@@ -1,7 +1,8 @@
 import styleTweaks from './style_tweaks.scss';
 import photoswipeCss from 'photoswipe/style.css';
 import PhotoSwipe from 'photoswipe';
-import { SettingsManager } from './utils/settings';
+import { userscriptSettings } from './utils/settings';
+import './heic/heic_converter';
 
 console.log("Bootstrapped Piazza Revert");
 
@@ -183,27 +184,6 @@ function waitForElement(selector, callback) {
         subtree: true
     });
 }
-
-window.addEventListener("SettingsChanged", (e) => {
-    const { key, newValue } = e.detail;
-
-    if (typeof newValue === 'boolean') {
-        const clzName = "us-feature-" + key;
-        const clzList = document.documentElement.classList;
-        if (!newValue) {
-            clzList.remove(clzName);
-        } else {
-            clzList.add(clzName);
-        }
-    }
-});
-
-const userscriptSettings = new SettingsManager();
-
-userscriptSettings.addSetting({ key: "smallerImagesInPosts", label: "Smaller Images in Posts", defaultValue: true });
-userscriptSettings.addSetting({ key: "enableHoverPreview", label: "Enable Image Hover Preview", defaultValue: true });
-userscriptSettings.addSetting({ key: "hoverPreviewDelay", label: "Hover Preview Delay (ms)", type: "number", defaultValue: 400 });
-userscriptSettings.addSetting({ key: "enableFancyGallery", label: "Enable Image Enlarge on Click", defaultValue: true });
 
 waitForElement("#piazza_homepage_id", el => {
     const settingsButton = document.createElement("a");

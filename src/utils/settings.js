@@ -126,3 +126,27 @@ export class SettingsManager {
         });
     }
 }
+
+window.addEventListener("SettingsChanged", (e) => {
+    const { key, newValue } = e.detail;
+
+    if (typeof newValue === 'boolean') {
+        const clzName = "us-feature-" + key;
+        const clzList = document.documentElement.classList;
+        if (!newValue) {
+            clzList.remove(clzName);
+        } else {
+            clzList.add(clzName);
+        }
+    }
+});
+
+const userscriptSettings = new SettingsManager();
+
+userscriptSettings.addSetting({ key: "smallerImagesInPosts", label: "Smaller Images in Posts", defaultValue: true });
+userscriptSettings.addSetting({ key: "enableHoverPreview", label: "Enable Image Hover Preview", defaultValue: true });
+userscriptSettings.addSetting({ key: "hoverPreviewDelay", label: "Hover Preview Delay (ms)", type: "number", defaultValue: 400 });
+userscriptSettings.addSetting({ key: "enableFancyGallery", label: "Enable Image Enlarge on Click", defaultValue: true });
+userscriptSettings.addSetting({ key: "heicImageDecoding", label: "Auto-Convert HEIC Images", defaultValue: true });
+
+export { userscriptSettings };
