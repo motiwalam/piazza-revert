@@ -38,11 +38,10 @@ export default {
           author: 'embeddedt',
           match: 'https://piazza.com/*',
           homepage: 'https://github.com/embeddedt/piazza-revert',
-          grant: ['GM_addStyle', 'GM_addElement']
+          grant: ['GM_addStyle', 'GM_addElement'],
+          version: `${original.version}-build.[buildTime]`
         };
-        if (dev) {
-          customHeaders.version = `${original.version}-build.[buildTime]`;
-        } else {
+        if (!dev) {
           const prodURL = 'https://github.com/embeddedt/piazza-revert/raw/refs/heads/main/revert.user.js';
           customHeaders.updateURL = prodURL;
           customHeaders.downloadURL = prodURL;
