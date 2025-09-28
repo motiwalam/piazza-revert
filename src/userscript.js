@@ -185,6 +185,7 @@ class SettingsManager {
         this.storageKey = storageKey;
         this.settings = {};
         this.load();
+        this._fireInitialEvents();
     }
 
     // Define a new setting
@@ -199,8 +200,12 @@ class SettingsManager {
 
     // Toggle boolean setting
     set(key, value) {
+        const oldValue = this.settings[key];
         this.settings[key] = value;
         this.save();
+
+        // Fire a custom event
+        _fireEvent(key, oldValue, value);
     }
 
     get(key) {
@@ -217,6 +222,19 @@ class SettingsManager {
             try {
                 this.settings = JSON.parse(stored);
             } catch { }
+        }
+    }
+
+    _fireEvent(key, oldValue, newValue) {
+        const event = new CustomEvent("SettingsChanged", {
+            detail: { key, oldValue, newValue }
+        });
+        window.dispatchEvent(event);
+    }
+
+    _fireInitialEvents() {
+        for (const key in this.settings) {
+            this._fireEvent(key, null, this.settings[key]);
         }
     }
 

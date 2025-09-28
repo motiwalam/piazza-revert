@@ -4,7 +4,8 @@
   "description": "Userscript to make Piazza's new UI look more like the old UI",
   "private": true,
   "scripts": {
-    "build": "npx webpack --mode=production",
+    "build": "NODE_ENV=production npx webpack",
+    "dev": "NODE_ENV=development npx webpack-dev-server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
