@@ -1,0 +1,28 @@
+{
+  "name": "piazza-revert",
+  "version": "0.5.0",
+  "description": "Userscript to make Piazza's new UI look more like the old UI",
+  "private": true,
+  "scripts": {
+    "build": "npx webpack --mode=production",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/embeddedt/piazza-revert.git"
+  },
+  "author": "embeddedt",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/embeddedt/piazza-revert/issues"
+  },
+  "homepage": "https://github.com/embeddedt/piazza-revert#readme",
+  "devDependencies": {
+    "sass": "^1.93.2",
+    "sass-loader": "^16.0.5",
+    "webpack": "^5.101.3",
+    "webpack-cli": "^6.0.1",
+    "webpack-dev-server": "^5.2.2",
+    "webpack-userscript": "^3.2.3"
+  }
+}

@@ -1,0 +1,309 @@
+/* remove fixation on 1536px width */
+#react_root .folderbar-wrapper, #topbar, .main-content #content-holder, .main-content .questions-and-answers #qanda-content > div {
+    max-width: none;
+}
+
+
+/* use legacy font */
+#react_root, .btn {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+#content-holder .feed-wrapper {
+    padding-left: 0;
+    margin-left: 0;
+}
+
+#content-holder #react_feed #feed_list_wrapper {
+    border-radius: 0px;
+    margin-bottom: 0px;
+}
+
+#react_feed #feed_list_wrapper #feed_list ul li.feed_item .content .snippet {
+    font-family: "Lucida Grande",Lucida,Tahoma,Verdana,Arial,sans-serif;
+    color: #666;
+}
+
+#feed_search_bar {
+    max-width: 400px;
+    padding-left: 4px;
+}
+
+/* move menu items next to course name */
+#site-nav {
+    margin-left: 0 !important;
+}
+
+.class-menu-wrapper {
+    margin-left: 10em;
+}
+
+#react_feed {
+    padding: 0;
+}
+
+#qanda-content > div > hr {
+    border-top: none;
+    height: 1em;
+}
+
+* {
+    letter-spacing: normal !important;
+}
+
+/* fix QA section */
+:root {
+    --qa-section-border-color: #dee2e6;
+    --qa-footer-background-color: rgb(242, 242, 242);
+    --qa-followup-background-color: #f6f7f6;
+    --qa-followup-reply-background-color: #f2f2f2;
+    --qa-avatar-border-color: #fff;
+    --qa-article-border-color: #cccccc;
+}
+
+html[data-darkreader-scheme="dark"] {
+    --qa-section-border-color: #383d3f;
+    --qa-footer-background-color: #222526;
+    --qa-followup-background-color: #1d1f20;
+    --qa-followup-reply-background-color: #1f2223;
+    --qa-avatar-border-color: #303436;
+    --qa-article-border-color: #3e4446;
+}
+
+.main-content .questions-and-answers {
+    background-color: #eaeef4;
+}
+
+[data-darkreader-scheme="dark"] .main-content .questions-and-answers {
+    background-color: #212425;
+}
+
+[data-darkreader-scheme="dark"] #react_feed #feed_list_wrapper #feed_list ul li.feed_item .content .snippet {
+    color: #a8a095;
+}
+
+[data-darkreader-scheme="dark"] #react_feed #feed_list_wrapper #feed_list ul li.feed_item.selected {
+    background-color: #3c3200;
+}
+
+#react_feed #feed_list_wrapper #feed_list ul li.feed_item .feed_item_dropdown_selector {
+    top: auto;
+    left: auto;
+    bottom: 4px;
+    right: 4px;
+}
+
+#react_feed + .questions-and-answers #qanda-content {
+    margin-left: 0px;
+    padding-right: 9px;
+}
+
+#qanda-content {
+    padding: 0 8px;
+}
+
+#post-header > button[aria-label="Close"] {
+    display: none;
+}
+
+.main-content .questions-and-answers #qanda-content #post-header {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    box-shadow: 0 1px 4px rgba(0,0,0,.15);
+    border: 1px solid var(--qa-section-border-color);
+    padding: 0.5rem 1rem !important;
+    margin: 0 0.5rem;
+}
+
+.main-content .questions-and-answers #qanda-content .post-footer {
+    border-top: 1px solid var(--qa-section-border-color);
+    background: none;
+}
+
+.main-content .questions-and-answers #qanda-content article[data-id="i_answer"], .main-content .questions-and-answers #qanda-content article[data-id="s_answer"]  {
+    background-color: #ffffff;
+}
+
+[data-darkreader-scheme="dark"] .main-content .questions-and-answers #qanda-content article[data-id="i_answer"], [data-darkreader-scheme="dark"] .main-content .questions-and-answers #qanda-content article[data-id="s_answer"] {
+    background-color: #181a1b;
+}
+
+.main-content .questions-and-answers #qanda-content article#qaContentViewId {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    box-shadow: 0 1px 4px rgba(0,0,0,.15);
+    padding-top: 0.75rem;
+    margin: 0 0.5rem;
+    padding-bottom: 0 !important;
+    border: 1px solid var(--qa-section-border-color);
+    border-top: none;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.main-content .questions-and-answers #qanda-content .followup_container {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+}
+
+article.answer {
+    box-shadow: 0 1px 4px rgba(0,0,0,.15);
+    padding: 0 !important;
+    border-radius: 5px;
+}
+
+article.answer > header {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 0.5rem;
+}
+
+article.answer > footer, .main-content .questions-and-answers #qanda-content .post-footer {
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+    background-color: var(--qa-footer-background-color);
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    /* fix the instructor edit submit panel getting cutoff */
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+article.answer > footer > div > div.pl-4 {
+    padding-left: 0.5rem !important;
+    margin-top: 0 !important;
+}
+
+article.answer {
+    position: relative;
+    border: 1px solid var(--qa-article-border-color);
+}
+
+.main-content .questions-and-answers #qanda-content .answer .update_text[data-id="contributors"] {
+    margin: 0;
+    text-align: right;
+    position: absolute;
+    bottom: 0.5rem;
+    right: 1rem;
+}
+
+article.answer > div:first-of-type {
+    margin-left: 0 !important;
+}
+
+article.answer > .content {
+    margin: 0 !important;
+    padding-right: 1.5rem !important;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    border-top: 1px solid var(--qa-section-border-color);
+    border-bottom: 1px solid var(--qa-section-border-color);
+}
+
+article.answer button.btn-ghost, .main-content .questions-and-answers #qanda-content .post-footer button.btn-ghost {
+    background-color: #1370c4;
+    color: #fff;
+    align-items: center;
+}
+
+article.answer button.btn-ghost:hover:not(:disabled), .main-content .questions-and-answers #qanda-content .post-footer button.btn-ghost:hover:not(:disabled) {
+    background-color: #0f5391;
+}
+
+article.answer button.btn-ghost > svg, .main-content .questions-and-answers #qanda-content .post-footer button.btn-ghost > svg {
+    display: none;
+}
+
+article.followup_container > header {
+    padding-top: 0.5rem;
+    margin-bottom: 0 !important;
+}
+
+article.followup_container .followup {
+    background: var(--qa-followup-background-color);
+}
+
+article.followup_container .followup_reply {
+    background: var(--qa-followup-reply-background-color);
+}
+
+article.followup_container .followup .followup_content_wrapper > .border-left {
+    border-left: 0 !important;
+}
+
+.main-content .questions-and-answers #qanda-content article .content .avatar {
+    border-radius: 0;
+    border: 2px solid var(--qa-avatar-border-color);
+}
+
+.followup.private {
+    border: 9px solid #343a40;
+}
+
+.followup.private .badge.bg-dark {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+    /* settings system */
+    .us-settings-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0,0,0,0.5);
+        z-index: 9998;
+    }
+    .us-settings-dialog {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+        z-index: 9999;
+        max-width: 90vw;
+        max-height: 80vh;
+        overflow-y: auto;
+    }
+    .us-settings-dialog h2 {
+        margin-top: 0;
+        font-size: 18px;
+    }
+    .us-settings-dialog .setting-container {
+        margin-bottom: 12px;
+    }
+    .us-settings-dialog label {
+        display: flex;
+        align-items: center;
+        font-size: 14px;
+    }
+    .us-settings-dialog label input[type="checkbox"] {
+        margin-right: 8px;
+    }
+    .us-settings-dialog label input[type="number"] {
+        margin-top: 4px;
+        padding: 2px 4px;
+        font-size: 14px;
+    }
+    .us-settings-dialog .close-btn {
+        margin-top: 10px;
+        padding: 6px 12px;
+        border-radius: 4px;
+        border: 1px solid #888;
+        background: #f0f0f0;
+        cursor: pointer;
+    }
+
+/* shrink images by default until clicked */
+#qanda-content .render-html-content img {
+    max-width: 150px;
+    height: auto;
+    cursor: pointer;
+}

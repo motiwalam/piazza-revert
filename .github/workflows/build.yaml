@@ -1,0 +1,38 @@
+name: Build and Deploy Revert
+
+on:
+  push:
+    branches:
+      - dev
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Checkout the repo
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+            persist-credentials: true  # needed to push back
+            fetch-depth: 0            # fetch all history for git
+
+      # 2. Set up Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v5
+        with:
+          cache: 'npm'
+          node-version: '20'  # or your Node version
+
+      # 3. Install dependencies
+      - name: Install dependencies
+        run: npm ci
+
+      # 4. Build project
+      - name: Build project
+        run: npm run build
+
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: dist
