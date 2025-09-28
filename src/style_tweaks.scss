@@ -301,9 +301,11 @@ article.followup_container .followup .followup_content_wrapper > .border-left {
         cursor: pointer;
     }
 
-/* shrink images by default until clicked */
-#qanda-content .render-html-content img {
-    max-width: 150px;
-    height: auto;
-    cursor: pointer;
+.us-feature-smallerImagesInPosts {
+    /* shrink images by default until clicked */
+    #qanda-content .render-html-content img {
+        max-width: 150px;
+        height: auto;
+        cursor: pointer;
+    }
 }

@@ -192,6 +192,7 @@ class SettingsManager {
     addSetting({ key, label, type = "boolean", defaultValue = false }) {
         if (!(key in this.settings)) {
             this.settings[key] = defaultValue;
+            this._fireEvent(key, null, defaultValue);
         }
         // Store metadata
         if (!this._meta) this._meta = {};
@@ -205,7 +206,7 @@ class SettingsManager {
         this.save();
 
         // Fire a custom event
-        _fireEvent(key, oldValue, value);
+        this._fireEvent(key, oldValue, value);
     }
 
     get(key) {
@@ -308,11 +309,26 @@ class SettingsManager {
     }
 }
 
+window.addEventListener("SettingsChanged", (e) => {
+    const { key, newValue } = e.detail;
+
+    if (typeof newValue === 'boolean') {
+        const clzName = "us-feature-" + key;
+        const clzList = document.documentElement.classList;
+        if (!newValue) {
+            clzList.remove(clzName);
+        } else {
+            clzList.add(clzName);
+        }
+    }
+});
+
 const userscriptSettings = new SettingsManager();
 
-userscriptSettings.addSetting({ key: "enableHoverPreview", label: "Enable Hover Preview", defaultValue: true });
-userscriptSettings.addSetting({ key: "enableFancyGallery", label: "Enable Fancybox Gallery", defaultValue: true });
+userscriptSettings.addSetting({ key: "smallerImagesInPosts", label: "Smaller Images in Posts", defaultValue: true });
+userscriptSettings.addSetting({ key: "enableHoverPreview", label: "Enable Image Hover Preview", defaultValue: true });
 userscriptSettings.addSetting({ key: "hoverPreviewDelay", label: "Hover Preview Delay (ms)", type: "number", defaultValue: 400 });
+userscriptSettings.addSetting({ key: "enableFancyGallery", label: "Enable Image Enlarge on Click", defaultValue: true });
 
 waitForElement("#piazza_homepage_id", el => {
     const settingsButton = document.createElement("a");
