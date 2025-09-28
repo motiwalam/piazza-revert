@@ -7,6 +7,7 @@ It also adds some small quality-of-life features:
 
 * Support for displaying multiple instructor endorsements
 * Better handling of multiple/large images in posts
+* Native HEIC image support
 
 ## How to use
 
