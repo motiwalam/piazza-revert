@@ -48,9 +48,9 @@ export default {
           version: `${original.version}-build.[buildTime]`
         };
         if (!dev) {
-          const prodURL = 'https://github.com/embeddedt/piazza-revert/raw/refs/heads/main/revert.user.js';
-          customHeaders.updateURL = prodURL;
-          customHeaders.downloadURL = prodURL;
+          const prodURL = 'https://github.com/embeddedt/piazza-revert/raw/refs/heads/main/';
+          customHeaders.updateURL = prodURL + 'revert.meta.js';
+          customHeaders.downloadURL = prodURL + 'revert.user.js';
         }
         return {
           ...original,
